@@ -23,8 +23,10 @@ series_1 = df['col1']
 dataframe_1 = df[['col1']]
 print(f'Series: {type(series_1)}, DataFrame: {type(type(dataframe_1))}')
 
-
 # Wyswietlanie danych
+print(df)
+print('-------------------')
+print(df.loc[:, 'col1'])
 
 # Dodawanie kolumn
 
