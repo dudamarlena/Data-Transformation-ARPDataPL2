@@ -69,36 +69,46 @@ import numpy as np
 # print(new_df.mean())
 
 # Operacje na Series i DataFrames
-new_data2 = pd.DataFrame({
-    "col1": [1, 2, 3, 4],
-    "col2": [4.1, 5.2, 6.3, 2.1]
-})
+# new_data2 = pd.DataFrame({
+#     "col1": [1, 2, 3, 4],
+#     "col2": [4.1, 5.2, 6.3, 2.1]
+# })
+#
+# new_data3 = pd.DataFrame({
+#     "col1": [1, 2, 3, 4, 0],
+#     "col2": [4.1, 5.2, 6.3, 2.1, 2.1]
+# })
+#
+# added_df = new_data2 + new_data3
+# added_df_2 = new_data2 + 0.5
+# added_df_3 = new_data2 + 5
+#
+#
+# def add_values(x):
+#     return x + 2 + 4 + 9
+#
+#
+# new_data2['col3'] = new_data2['col1'].apply(add_values)
 
-new_data3 = pd.DataFrame({
-    "col1": [1, 2, 3, 4, 0],
-    "col2": [4.1, 5.2, 6.3, 2.1, 2.1]
-})
-
-added_df = new_data2 + new_data3
-added_df_2 = new_data2 + 0.5
-added_df_3 = new_data2 + 5
-
-def add_values(x):
-    return x + 2 + 4 + 9
-
-
-new_data2['col3'] = new_data2['col1'].apply(add_values)
-
-new_data2['col4'] = new_data2['col1'].apply(lambda x: x + 2 + 4 + 9)
-print(new_data2)
-
-"""
-new_data4 = pd.DataFrame({
-    "col1": [1, 2, 3, 4] + [0]*5,
-    "col2": [4.1, 5.2, 6.3, 2.1] + [0]*5
-}) """
+# new_data2['col4'] = new_data2['col1'].apply(lambda x: x + 2 + 4 + 9)
+# print(new_data2)
+#
+# """
+# new_data4 = pd.DataFrame({
+#     "col1": [1, 2, 3, 4] + [0]*5,
+#     "col2": [4.1, 5.2, 6.3, 2.1] + [0]*5
+# }) """
 
 # Łączenie DataFrames
 
+data = pd.DataFrame({
+    "Age_id": [1, 2, 3, 4, 6],
+    "Age": [4, 52, 63, 21, 10]
+})
 
-s = pd.Series(['a', 's', 'd', np.NaN])
+data2 = pd.DataFrame({
+    "Age_id": [1, 2, 3, 4, 5],
+    "Name": ['A', 'B', 'C', 'D', 'E']
+})
+
+print(data.merge(data2))
