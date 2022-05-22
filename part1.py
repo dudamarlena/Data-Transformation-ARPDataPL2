@@ -10,7 +10,13 @@ l4 = np.random.random(size=4)
 s1 = pd.Series(l4, index=['A', 'B', 'C', 'D'], name='numbers', dtype=int)
 
 # Tworzenie DataFrame
-
+data = {
+    "col1": [1, 2, 3],
+    "col2": [4.1, 5.2, 6.3],
+    "col3": ['A', "B", "C"]
+}
+df = pd.DataFrame(data=data)
+print(df)
 
 # Wyswietlanie danych
 
