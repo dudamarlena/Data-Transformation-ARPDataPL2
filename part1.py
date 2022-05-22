@@ -62,6 +62,9 @@ print(a_values)
 a_4_values = new_df[(new_df['col3'] == "A") & (new_df['col1'] > 3)]
 print(a_4_values)
 
+a_values['col2'][a_values['col2'] > 3] = 0
+print(a_values)
+
 # Operacje na Series i DataFrames
 
 # Łączenie DataFrames
