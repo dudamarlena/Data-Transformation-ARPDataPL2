@@ -26,7 +26,15 @@ print(f'Series: {type(series_1)}, DataFrame: {type(type(dataframe_1))}')
 # Wyswietlanie danych
 print(df)
 print('-------------------')
-print(df.loc[:, 'col1'])
+# by names
+print(df.loc[1, 'col1'])
+print(df.loc[:, ['col1', 'col2']])
+
+# by index
+print(df.iloc[1, 0:1])
+print(df.iloc[:, :-1])
+
+
 
 # Dodawanie kolumn
 
