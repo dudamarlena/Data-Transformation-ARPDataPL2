@@ -161,15 +161,26 @@ import numpy as np
 # print(grouped_data2)
 
 # Sortowanie
+# data = pd.DataFrame({
+#     "Sex": ["K", "M", "K", "M", "M"],
+#     "Age": [4, 52, 52, 21, 30],
+#     "High": [90, 180, 168, 140, 169]
+# })
+#
+# sorted_data = data.sort_values(by=["Age", "High"], ascending=True)
+# sorted_data = sorted_data.reset_index()
+# sorted_data.reset_index(inplace=True)
+# print(sorted_data)
+
+# Brakujące wartości
 data = pd.DataFrame({
-    "Sex": ["K", "M", "K", "M", "M"],
-    "Age": [4, 52, 52, 21, 30],
+    "Sex": ["K", "M", "K", "M", np.NaN],
+    "Age": [4, 52, 52, np.NaN, np.NaN],
     "High": [90, 180, 168, 140, 169]
 })
 
-sorted_data = data.sort_values(by=["Age", "High"], ascending=True)
-sorted_data = sorted_data.reset_index()
-sorted_data.reset_index(inplace=True)
-print(sorted_data)
-
-# Brakujące wartości
+print(data)
+print('----------------')
+nan_values = data[data['Age'].isna()]
+data.dropna(inplace=True, thresh=3)
+print(data)
