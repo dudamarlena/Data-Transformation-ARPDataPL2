@@ -15,9 +15,10 @@ data = {
     "col2": [4.1, 5.2, 6.3],
     "col3": ["A", "B", "C"],
 }
-data2 = np.array([1, 2, 3, 4, 5])
+data2 = np.array([[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]])
 
 df = pd.DataFrame(data=data)
+df2 = pd.DataFrame(data=data2, columns=['col1', 'col2'])
 
 series_1 = df['col1']
 dataframe_1 = df[['col1']]
@@ -33,8 +34,6 @@ print(df.loc[:, ['col1', 'col2']])
 # by index
 print(df.iloc[1, 0:1])
 print(df.iloc[:, :-1])
-
-
 
 # Dodawanie kolumn
 
