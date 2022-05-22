@@ -101,24 +101,43 @@ import numpy as np
 
 # Łączenie DataFrames
 
+# data = pd.DataFrame({
+#     "Age_id": [1, 2, 3, 4],
+#     "Age": [4, 52, 63, 21]
+# })
+#
+# data2 = pd.DataFrame({
+#     "Age_id": [1, 2, 3, 4],
+#     "Name": ['A', 'B', 'C', 'D']
+# })
+#
+# merge_1 = data.merge(data2)
+# print(merge_1)
+# merge_2 = data.merge(data2, left_on="Age_id")  # jesli nazwa kolumny jest taka sama w obu DFs
+# merge_3 = data.merge(data2, how="right", left_on="Age_id", right_on="age_id")
+# merge_4 = data.merge(data2, how="outer", left_on="Age_id", right_on="age_id")
+# print(merge_4)
+
+# join_1 = data.join(data2, on="Age_id", lsuffix="_l", rsuffix="_r", how="inner")
+# print(join_1)
+
+
 data = pd.DataFrame({
-    "Age_id": [1, 2, 3, 4, 6],
-    "Age": [4, 52, 63, 21, 10]
+    "Age_id": [1, 2, 3, 4],
+    "Age": [4, 52, 63, 21]
 })
 
 data2 = pd.DataFrame({
-    "age_id": [1, 2, 3, 4, 5],
-    "Name": ['A', 'B', 'C', 'D', 'E']
+    "Age_id": [1, 2, 3, 4],
+    "Age": [4, 52, 63, 21]
 })
 
-join_1 = data.merge(data2)
-joint_2 = data.merge(data2, left_on="Age_id")  # jesli nazwa kolumny jest taka sama w obu DFs
+append_df = data.append(data2)
+append_df = append_df.set_index('Age_id')
+append_df = append_df.reset_index()
+print(append_df)
 
-print(data.merge(data2, how="right", left_on="Age_id", right_on="age_id"))
+concat_df = pd.concat([data, data2], axis=1)
+# print(concat_df)
 
-
-
-
-
-
-# data = pd.DataFrame(data, columns=['age_id', "Name", "Age_id", "Age"])
+# data = pd.DataFrame(data, columns=['age_id', "Name", "Age_id", "Age"]) # zmiana kolejnosci kolumn
