@@ -1,17 +1,32 @@
 import pandas as pd
 
 data = pd.read_csv(r"Datasets/cars.csv", sep=";")
-print(data.info())
-print(data.describe())
+# print(data.info())
+# print(data.describe())
 # print(data.head(n=10))
 # print(data.tail(n=10))
 # print(data.sample(n=10))
 
-objects_data = data.select_dtypes(object)
-print(objects_data.describe())
+# print(data.select_dtypes(object).describe())
+# usuwanie danych
+del data['Unnamed: 5']
+del data['TYPE']
 
-float_data = data.select_dtypes(float)
-print(float_data.describe())
+print(data.select_dtypes(object).describe())
+ # Usuwanie nan
+print(data[data['Make'].isna()])
+print(data[(data['Model'] == "MODEL S (70 kWh battery)") | (data['Model'] == 'MODEL S (85/90 kWh battery)')])
+data.fillna("TESLA", inplace=True)
 
-int_data = data.select_dtypes(int)
-print(int_data.describe())
+# standaryzacja danych
+print(data['Make'].unique())
+data.replace("NISAN", "NISSAN", inplace=True)
+print(data['Make'].unique())
+
+print(data.select_dtypes(object).describe())
+
+# float_data = data.select_dtypes(float)
+# print(float_data.describe())
+#
+# int_data = data.select_dtypes(int)
+# print(int_data.describe())
