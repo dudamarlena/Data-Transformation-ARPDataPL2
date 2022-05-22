@@ -144,21 +144,32 @@ import numpy as np
 # data = pd.DataFrame(data, columns=['age_id', "Name", "Age_id", "Age"]) # zmiana kolejnosci kolumn
 
 # Grupowanie
+# data = pd.DataFrame({
+#     "Sex": ["K", "M", "K", "M", "M"],
+#     "Name": ["A", "B", "A", "C", "B"],
+#     "Age": [4, 52, 63, 21, 30],
+#     "High": [90, 180, 168, 140, 169]
+# })
+#
+# grouped_data = data.groupby(by=['Sex']).mean()['Age']
+# grouped_data2 = data.groupby(by=['Sex', "Name"]).agg(
+#     {
+#         "Age": ["mean", "min"],
+#         "High": ["min"]
+#     }
+# )
+# print(grouped_data2)
+
+# Sortowanie
 data = pd.DataFrame({
     "Sex": ["K", "M", "K", "M", "M"],
-    "Age": [4, 52, 63, 21, 30],
+    "Age": [4, 52, 52, 21, 30],
     "High": [90, 180, 168, 140, 169]
 })
 
-grouped_data = data.groupby(by=['Sex']).mean()['Age']
-grouped_data2 = data.groupby(by=['Sex']).agg(
-    {
-        "Age": ["mean", "min"],
-        "High": ["min"]
-    }
-)
-print(grouped_data2)
-
-# Sortowanie
+sorted_data = data.sort_values(by=["Age", "High"], ascending=True)
+sorted_data = sorted_data.reset_index()
+sorted_data.reset_index(inplace=True)
+print(sorted_data)
 
 # Brakujące wartości
