@@ -110,7 +110,7 @@ import numpy as np
 #     "Age_id": [1, 2, 3, 4],
 #     "Name": ['A', 'B', 'C', 'D']
 # })
-#
+
 # merge_1 = data.merge(data2)
 # print(merge_1)
 # merge_2 = data.merge(data2, left_on="Age_id")  # jesli nazwa kolumny jest taka sama w obu DFs
@@ -118,26 +118,47 @@ import numpy as np
 # merge_4 = data.merge(data2, how="outer", left_on="Age_id", right_on="age_id")
 # print(merge_4)
 
-# join_1 = data.join(data2, on="Age_id", lsuffix="_l", rsuffix="_r", how="inner")
-# print(join_1)
+# join_1 = data.join(data2, on="Age_id", lsuffix="_l", rsuffix="_r") # nieprawidlowo
+# join_2 = data.join(data2.set_index("Age_id"), on="Age_id")
+# print(join_2)
 
 
-data = pd.DataFrame({
-    "Age_id": [1, 2, 3, 4],
-    "Age": [4, 52, 63, 21]
-})
-
-data2 = pd.DataFrame({
-    "Age_id": [1, 2, 3, 4],
-    "Age": [4, 52, 63, 21]
-})
-
-append_df = data.append(data2)
-append_df = append_df.set_index('Age_id')
-append_df = append_df.reset_index()
-print(append_df)
-
-concat_df = pd.concat([data, data2], axis=1)
+# data = pd.DataFrame({
+#     "Age_id": [1, 2, 3, 4],
+#     "Age": [4, 52, 63, 21]
+# })
+#
+# data2 = pd.DataFrame({
+#     "Age_id": [1, 2, 3, 4],
+#     "Age": [4, 52, 63, 21]
+# })
+#
+# append_df = data.append(data2)
+# append_df = append_df.set_index('Age_id')
+# append_df = append_df.reset_index()
+# print(append_df)
+#
+# concat_df = pd.concat([data, data2], axis=1)
 # print(concat_df)
 
 # data = pd.DataFrame(data, columns=['age_id', "Name", "Age_id", "Age"]) # zmiana kolejnosci kolumn
+
+# Grupowanie
+data = pd.DataFrame({
+    "Sex": ["K", "M", "K", "M", "M"],
+    "Age": [4, 52, 63, 21, 30],
+    "High": [90, 180, 168, 140, 169]
+})
+
+grouped_data = data.groupby(by=['Sex']).mean()['Age']
+grouped_data2 = data.groupby(by=['Sex']).agg(
+    {
+        "Age": ["mean", "min"],
+        "High": ["min"]
+    }
+)
+print(grouped_data2)
+
+# Sortowanie
+
+# Brakujące wartości
