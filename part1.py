@@ -13,9 +13,11 @@ s1 = pd.Series(l4, index=['A', 'B', 'C', 'D'], name='numbers', dtype=int)
 data = {
     "col1": [1, 2, 3],
     "col2": [4.1, 5.2, 6.3],
-    "col3": ['A', "B", "C"]
+    "col3": ["A", "B", "C"],
 }
-df = pd.DataFrame(data=data)
+data2 = np.array([1, 2, 3, 4, 5])
+
+df = pd.DataFrame(data=data2, columns=['col1'])
 print(df)
 
 # Wyswietlanie danych
