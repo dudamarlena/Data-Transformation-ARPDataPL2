@@ -3,9 +3,14 @@ import pandas as pd
 import numpy as np
 
 # Tworzenie Series
-s1 = pd.Series([1, 2, 3, 4], index=['A','B', 'C', 'D'], name='numbers', dtype=int)
+l1 = [1, 2, 3, 4]
+l2 = list((1, 2, 3, 4))
+l3 = (1, 2, 3, 4)
+l4 = np.random.random(size=4)
+s1 = pd.Series(l4, index=['A', 'B', 'C', 'D'], name='numbers', dtype=int)
 
 # Tworzenie DataFrame
+
 
 # Wyswietlanie danych
 
