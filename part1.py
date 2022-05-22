@@ -15,7 +15,7 @@ data = {
     "col2": [4.1, 5.2, 6.3],
     "col3": ["A", "B", "C"],
 }
-data2 = np.array([[1, 2, 3, 4, 5], [1, 2, 3, 4, 5]])
+data2 = np.array([[1, 2], [1, 2]])
 
 df = pd.DataFrame(data=data)
 df2 = pd.DataFrame(data=data2, columns=['col1', 'col2'])
@@ -36,6 +36,10 @@ print(df.iloc[1, 0:1])
 print(df.iloc[:, :-1])
 
 # Dodawanie kolumn
+df['new_col'] = 'v'
+df['new_col_list'] = ['v1', 'v2', 'v3']
+df['new_col_series'] = pd.Series(['v1', 'v2', 'v3'])
+print(df)
 
 # Usuwanie kolumn
 
