@@ -17,8 +17,12 @@ data = {
 }
 data2 = np.array([1, 2, 3, 4, 5])
 
-df = pd.DataFrame(data=data2, columns=['col1'])
-print(df)
+df = pd.DataFrame(data=data)
+
+series_1 = df['col1']
+dataframe_1 = df[['col1']]
+print(f'Series: {type(series_1)}, DataFrame: {type(type(dataframe_1))}')
+
 
 # Wyswietlanie danych
 
