@@ -34,14 +34,19 @@ print(df.loc[:, ['col1', 'col2']])
 # by index
 print(df.iloc[1, 0:1])
 print(df.iloc[:, :-1])
+print(f'base shape: ', df.shape)
 
 # Dodawanie kolumn
 df['new_col'] = 'v'
 df['new_col_list'] = ['v1', 'v2', 'v3']
 df['new_col_series'] = pd.Series(['v1', 'v2', 'v3'])
-print(df)
+print(f'shape with new columns: ', df.shape)
 
 # Usuwanie kolumn
+del df['new_col_series']
+df = df.drop(labels=['col1'], axis=0)
+df = df.drop(columns=['col2', 'col3'])
+print(f'shape after del columns: ', df.shape)
 
 # Filtrowanie danych
 
