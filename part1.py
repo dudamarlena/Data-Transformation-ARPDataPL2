@@ -44,11 +44,23 @@ print(f'shape with new columns: ', df.shape)
 
 # Usuwanie kolumn
 del df['new_col_series']
-df = df.drop(labels=['col1'], axis=0)
+df = df.drop(labels=['col1'], axis=1)
 df = df.drop(columns=['col2', 'col3'])
 print(f'shape after del columns: ', df.shape)
 
 # Filtrowanie danych
+new_data = {
+    "col1": [1, 2, 3, 4] * 2,
+    "col2": [4.1, 5.2, 6.3, 2.1] * 2,
+    "col3": ["A", "B", "C", "A"] * 2,
+}
+new_df = pd.DataFrame(new_data)
+a_values = new_df[new_df['col3'] == "A"]
+print(new_df['col3'] == "A")
+print(a_values)
+
+a_4_values = new_df[(new_df['col3'] == "A") & (new_df['col1'] > 3)]
+print(a_4_values)
 
 # Operacje na Series i DataFrames
 
