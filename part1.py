@@ -1,4 +1,4 @@
-# importy
+# import
 
 # Tworzenie Series
 
