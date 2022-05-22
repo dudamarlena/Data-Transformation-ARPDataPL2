@@ -107,8 +107,18 @@ data = pd.DataFrame({
 })
 
 data2 = pd.DataFrame({
-    "Age_id": [1, 2, 3, 4, 5],
+    "age_id": [1, 2, 3, 4, 5],
     "Name": ['A', 'B', 'C', 'D', 'E']
 })
 
-print(data.merge(data2))
+join_1 = data.merge(data2)
+joint_2 = data.merge(data2, left_on="Age_id")  # jesli nazwa kolumny jest taka sama w obu DFs
+
+print(data.merge(data2, how="right", left_on="Age_id", right_on="age_id"))
+
+
+
+
+
+
+# data = pd.DataFrame(data, columns=['age_id', "Name", "Age_id", "Age"])
