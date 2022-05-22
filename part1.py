@@ -82,7 +82,15 @@ new_data3 = pd.DataFrame({
 added_df = new_data2 + new_data3
 added_df_2 = new_data2 + 0.5
 added_df_3 = new_data2 + 5
-print(added_df_2)
+
+def add_values(x):
+    return x + 2 + 4 + 9
+
+
+new_data2['col3'] = new_data2['col1'].apply(add_values)
+
+new_data2['col4'] = new_data2['col1'].apply(lambda x: x + 2 + 4 + 9)
+print(new_data2)
 
 """
 new_data4 = pd.DataFrame({
@@ -91,8 +99,6 @@ new_data4 = pd.DataFrame({
 }) """
 
 # Łączenie DataFrames
-
-
 
 
 s = pd.Series(['a', 's', 'd', np.NaN])
