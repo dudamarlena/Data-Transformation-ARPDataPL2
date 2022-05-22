@@ -19,9 +19,13 @@ print(data[(data['Model'] == "MODEL S (70 kWh battery)") | (data['Model'] == 'MO
 data.fillna("TESLA", inplace=True)
 
 # standaryzacja danych
-print(data['Make'].unique())
-data.replace("NISAN", "NISSAN", inplace=True)
-print(data['Make'].unique())
+# print(data['Make'].unique())
+# data.replace("NISAN", "NISSAN", inplace=True)
+# print(data['Make'].unique())
+
+print(data['TIME (h)'].unique())
+data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x))
+print(data['TIME (h)'].unique())
 
 print(data.select_dtypes(object).describe())
 
