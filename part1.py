@@ -1,4 +1,5 @@
 # import
+import pandas as pd
 
 # Tworzenie Series
 
