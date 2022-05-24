@@ -92,17 +92,26 @@ data = data[data['(kW)'] < 600]
 # data['Year and month'] = data['new date'].dt.to_period("M")
 # print(data['Year and month'])
 
-# nornalizacja, standaryzacja
-data['TIME (h) normalized'] = (data['TIME (h)'] - data['TIME (h)'].min()) / \
-                              (data['TIME (h)'].max() - data['TIME (h)'].min())
-data['(kW) normalized'] = (data['(kW)'] - data['(kW)'].min()) / \
-                              (data['(kW)'].max() - data['(kW)'].min())
+# normalizacja, standaryzacja
+x_min = data['TIME (h)'].min()
+x_max = data['TIME (h)'].max()
+x = data['TIME (h)']
+data['TIME (h) normalized'] = (x - x_min) / (x_max - x_min)
+
+print("Initial data for Time: ", sorted(data['TIME (h)'].unique()))
+print("Normalized data for Time: ", sorted(data['TIME (h) normalized'].unique()))
+
+x_min_kw = data['(kW)'].min()
+x_max_kw = data['(kW)'].max()
+x_kw = data['(kW)']
+data['(kW) normalized'] = (x_kw-x_min_kw) / (x_max_kw-x_min_kw)
+print("Initial data for kW: ", sorted(data['(kW)'].unique()))
+print("Normalized data for kW: ", sorted(data['(kW) normalized'].unique()))
 
 # plt.plot(data['TIME (h)'])
 plt.plot(data['TIME (h) normalized'])
 # plt.plot(data['(kW)'])
 plt.plot(data['(kW) normalized'])
-
 plt.show()
 
 
