@@ -65,13 +65,19 @@ data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x)
 
 factor = 3  # musi byc <2,4>
 
-upper_limit = data['(kW)'].mean() + data['(kW)'].std() * factor
-lower_limit = data['(kW)'].mean() - data['(kW)'].std() * factor
-print(f'Upper: {upper_limit}, Lower: {lower_limit}')
+# upper_limit = data['(kW)'].mean() + data['(kW)'].std() * factor
+# lower_limit = data['(kW)'].mean() - data['(kW)'].std() * factor
+# print(f'Upper: {upper_limit}, Lower: {lower_limit}')
+#
+# data = data[(data['(kW)'] < upper_limit) & (data['(kW)'] > lower_limit)]
+# print(sorted(data['(kW)'].unique()))
 
-data = data[(data['(kW)'] < upper_limit) & (data['(kW)'] > lower_limit)]
-print(sorted(data['(kW)'].unique()))
-
+# upper_limit = data['(kW)'].quantile(0.95)
+# lower_limit = data['(kW)'].quantile(0.05)
+# print(f'Upper: {upper_limit}, Lower: {lower_limit}')
+#
+# data = data[(data['(kW)'] < upper_limit) & (data['(kW)'] >= lower_limit)]
+# print(sorted(data['(kW)'].unique()))
 
 # plt.scatter(data.index, data['(kW)'])
 # plt.show()
