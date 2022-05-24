@@ -14,10 +14,10 @@ data = pd.read_csv(r"Datasets/cars.csv", sep=";")
 del data['Unnamed: 5']
 del data['TYPE']
 
-print(data.select_dtypes(object).describe())
+# print(data.select_dtypes(object).describe())
 # Usuwanie nan
-print(data[data['Make'].isna()])
-print(data[(data['Model'] == "MODEL S (70 kWh battery)") | (data['Model'] == 'MODEL S (85/90 kWh battery)')])
+# print(data[data['Make'].isna()])
+# print(data[(data['Model'] == "MODEL S (70 kWh battery)") | (data['Model'] == 'MODEL S (85/90 kWh battery)')])
 data.fillna("TESLA", inplace=True)
 
 # standaryzacja danych
@@ -25,11 +25,11 @@ data.fillna("TESLA", inplace=True)
 # data.replace("NISAN", "NISSAN", inplace=True)
 # print(data['Make'].unique())
 
-print(data['TIME (h)'].unique())
+# print(data['TIME (h)'].unique())
 data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x))
-print(data['TIME (h)'].unique())
+# print(data['TIME (h)'].unique())
 
-print(data.select_dtypes(object).describe())
+# print(data.select_dtypes(object).describe())
 
 # float_data = data.select_dtypes(float)
 # print(float_data.describe())
@@ -38,8 +38,16 @@ print(data.select_dtypes(object).describe())
 # print(int_data.describe())
 
 # duplikaty
+# duplicated_records
+# print(any(data.duplicated()))
+# data_with_duplicates = data.append(data.iloc[:1])
+# print(any(data_with_duplicates.duplicated()))
+# data_without_duplicates = data_with_duplicates.drop_duplicates()
+# print(any(data_without_duplicates.duplicated()))
 
 # dyskretyzacja
+print(sorted(data['(kW)'].unique()))
+# data['(kW)'] =
 
 # one hot encoding
 
