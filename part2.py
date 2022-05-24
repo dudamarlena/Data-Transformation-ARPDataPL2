@@ -2,7 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-data = pd.read_csv(r"Datasets/cars.csv", sep=";")
+
+# data = pd.read_csv(r"Datasets/cars.csv", sep=";")
 # print(data.info())
 # print(data.describe())
 # print(data.head(n=10))
@@ -26,7 +27,7 @@ data = pd.read_csv(r"Datasets/cars.csv", sep=";")
 # print(data['Make'].unique())
 
 # print(data['TIME (h)'].unique())
-data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x))
+# data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x))
 # print(data['TIME (h)'].unique())
 
 # print(data.select_dtypes(object).describe())
@@ -61,7 +62,7 @@ data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x)
 # usuwanie szumów - outliers
 # print(sorted(data['(kW)'].unique()))
 
-data = data[data['(kW)'] < 600]
+# data = data[data['(kW)'] < 600]
 
 # factor = 3  # musi byc <2,4>
 
@@ -115,8 +116,13 @@ data = data[data['(kW)'] < 600]
 # plt.show()
 
 # transformacja logarytmiczna
-dummy_list = pd.Series([0, 0, 1, 3, 2, 2, 1, 2, 1, 2, 2, 2, 3, 4, 7, 8, 5, 4, 10, 9, 11, 14])
-log_1 = (dummy_list + 1).transform(np.log)
-plt.hist(x=log_1, bins=11)
-plt.show()
+# dummy_list = pd.Series([0, 0, 1, 3, 2, 2, 1, 2, 1, 2, 2, 2, 3, 4, 7, 8, 5, 4, 10, 9, 11, 14])
+# log_1 = (dummy_list + 1).transform(np.log)
+# plt.hist(x=log_1, bins=11)
+# plt.show()
 
+from pandas_profiling import ProfileReport
+
+data = pd.read_csv(r"Datasets/cars.csv", sep=";")
+report = ProfileReport(data)
+report.to_file("report.html")
