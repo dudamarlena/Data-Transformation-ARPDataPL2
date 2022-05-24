@@ -93,27 +93,30 @@ data = data[data['(kW)'] < 600]
 # print(data['Year and month'])
 
 # normalizacja, standaryzacja
-x_min = data['TIME (h)'].min()
-x_max = data['TIME (h)'].max()
-x = data['TIME (h)']
-data['TIME (h) normalized'] = (x - x_min) / (x_max - x_min)
-
-print("Initial data for Time: ", sorted(data['TIME (h)'].unique()))
-print("Normalized data for Time: ", sorted(data['TIME (h) normalized'].unique()))
-
-x_min_kw = data['(kW)'].min()
-x_max_kw = data['(kW)'].max()
-x_kw = data['(kW)']
-data['(kW) normalized'] = (x_kw-x_min_kw) / (x_max_kw-x_min_kw)
-print("Initial data for kW: ", sorted(data['(kW)'].unique()))
-print("Normalized data for kW: ", sorted(data['(kW) normalized'].unique()))
-
-# plt.plot(data['TIME (h)'])
-plt.plot(data['TIME (h) normalized'])
-# plt.plot(data['(kW)'])
-plt.plot(data['(kW) normalized'])
-plt.show()
-
+# x_min = data['TIME (h)'].min()
+# x_max = data['TIME (h)'].max()
+# x = data['TIME (h)']
+# data['TIME (h) normalized'] = (x - x_min) / (x_max - x_min)
+#
+# print("Initial data for Time: ", sorted(data['TIME (h)'].unique()))
+# print("Normalized data for Time: ", sorted(data['TIME (h) normalized'].unique()))
+#
+# x_min_kw = data['(kW)'].min()
+# x_max_kw = data['(kW)'].max()
+# x_kw = data['(kW)']
+# data['(kW) normalized'] = (x_kw-x_min_kw) / (x_max_kw-x_min_kw)
+# print("Initial data for kW: ", sorted(data['(kW)'].unique()))
+# print("Normalized data for kW: ", sorted(data['(kW) normalized'].unique()))
+#
+# # plt.plot(data['TIME (h)'])
+# plt.plot(data['TIME (h) normalized'])
+# # plt.plot(data['(kW)'])
+# plt.plot(data['(kW) normalized'])
+# plt.show()
 
 # transformacja logarytmiczna
 dummy_list = pd.Series([0, 0, 1, 3, 2, 2, 1, 2, 1, 2, 2, 2, 3, 4, 7, 8, 5, 4, 10, 9, 11, 14])
+log_1 = (dummy_list + 1).transform(np.log)
+plt.hist(x=log_1, bins=11)
+plt.show()
+
