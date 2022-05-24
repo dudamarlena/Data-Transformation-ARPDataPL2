@@ -85,10 +85,12 @@ factor = 3  # musi byc <2,4>
 # praca z datami
 data['date'] = '01/01/2000'
 data['date'] = pd.to_datetime(data['date'])
-print(data['date'])
-data['Year'] = data['date'].dt.year
-data['Month'] = data['date'].dt.month
-print(data['Month'])
+data['new date'] = pd.date_range(start='01/01/2000', periods=len(data), freq="M")
+print(data['new date'])
+data['Year'] = data['new date'].dt.year
+data['Month'] = data['new date'].dt.month
+data['Year and month'] = data['new date'].dt.to_period("M")
+print(data['Year and month'])
 
 # nornalizacja, standaryzacja
 
