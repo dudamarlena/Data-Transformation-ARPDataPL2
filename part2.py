@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
 data = pd.read_csv(r"Datasets/cars.csv", sep=";")
 # print(data.info())
@@ -13,7 +15,7 @@ del data['Unnamed: 5']
 del data['TYPE']
 
 print(data.select_dtypes(object).describe())
- # Usuwanie nan
+# Usuwanie nan
 print(data[data['Make'].isna()])
 print(data[(data['Model'] == "MODEL S (70 kWh battery)") | (data['Model'] == 'MODEL S (85/90 kWh battery)')])
 data.fillna("TESLA", inplace=True)
@@ -34,3 +36,19 @@ print(data.select_dtypes(object).describe())
 #
 # int_data = data.select_dtypes(int)
 # print(int_data.describe())
+
+# duplikaty
+
+# dyskretyzacja
+
+# one hot encoding
+
+# usuwanie szumów
+
+# praca z datami
+
+# nornalizacja, standaryzacja
+
+# transformacja logarytmiczna
+dummy_list = pd.Series([0, 0, 1, 3, 2, 2, 1, 2, 1, 2, 2, 2, 3, 4, 7, 8, 5, 4, 10, 9, 11, 14])
+

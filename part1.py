@@ -179,7 +179,6 @@ data = pd.DataFrame({
     "High": [90, 180, 168, 140, 169]
 })
 
-print(data)
 print('----------------')
 nan_values = data[data['Age'].isna()]
 data.dropna(inplace=True, thresh=3)
