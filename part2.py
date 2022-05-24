@@ -11,14 +11,14 @@ data = pd.read_csv(r"Datasets/cars.csv", sep=";")
 
 # print(data.select_dtypes(object).describe())
 # usuwanie danych
-del data['Unnamed: 5']
-del data['TYPE']
+# del data['Unnamed: 5']
+# del data['TYPE']
 
 # print(data.select_dtypes(object).describe())
 # Usuwanie nan
 # print(data[data['Make'].isna()])
 # print(data[(data['Model'] == "MODEL S (70 kWh battery)") | (data['Model'] == 'MODEL S (85/90 kWh battery)')])
-data.fillna("TESLA", inplace=True)
+# data.fillna("TESLA", inplace=True)
 
 # standaryzacja danych
 # print(data['Make'].unique())
@@ -26,7 +26,7 @@ data.fillna("TESLA", inplace=True)
 # print(data['Make'].unique())
 
 # print(data['TIME (h)'].unique())
-data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x))
+# data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x))
 # print(data['TIME (h)'].unique())
 
 # print(data.select_dtypes(object).describe())
@@ -83,6 +83,12 @@ factor = 3  # musi byc <2,4>
 # plt.show()
 
 # praca z datami
+data['date'] = '01/01/2000'
+data['date'] = pd.to_datetime(data['date'])
+print(data['date'])
+data['Year'] = data['date'].dt.year
+data['Month'] = data['date'].dt.month
+print(data['Month'])
 
 # nornalizacja, standaryzacja
 
