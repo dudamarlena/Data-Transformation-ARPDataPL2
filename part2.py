@@ -47,19 +47,28 @@ data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x)
 
 # dyskretyzacja
 # print(sorted(data['(kW)'].unique()))
-bins = [34, 130, 300, 3860]
-data['(kW) bins'] = pd.cut(data['(kW)'], bins=bins, labels=["Low", "Medium", "High"])
+# bins = [34, 130, 300, 3860]
+# data['(kW) bins'] = pd.cut(data['(kW)'], bins=bins, labels=["Low", "Medium", "High"])
 # print(data['(kW) bins'])
 
 # one hot encoding
 # print(pd.get_dummies(data['(kW) bins']))
-data = pd.concat([data, pd.get_dummies(data['(kW) bins'])], axis=1)
+# data = pd.concat([data, pd.get_dummies(data['(kW) bins'])], axis=1)
 
-del data['(kW) bins']
+# del data['(kW) bins']
 # print(data.info())
 
-# usuwanie szumów
+# usuwanie szumów - outliers
+print(sorted(data['(kW)'].unique()))
 
+data = data[data['(kW)'] < 600]
+
+
+
+print(sorted(data['(kW)'].unique()))
+
+plt.scatter(data.index, data['(kW)'])
+plt.show()
 # praca z datami
 
 # nornalizacja, standaryzacja
