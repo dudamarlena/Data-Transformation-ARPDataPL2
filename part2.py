@@ -46,8 +46,10 @@ data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x)
 # print(any(data_without_duplicates.duplicated()))
 
 # dyskretyzacja
-print(sorted(data['(kW)'].unique()))
-# data['(kW)'] =
+# print(sorted(data['(kW)'].unique()))
+bins = [34, 130, 300, 3860]
+data['(kW) bins'] = pd.cut(data['(kW)'], bins=bins, labels=["Low", "Medium", "High"])
+# print(data['(kW) bins'])
 
 # one hot encoding
 
