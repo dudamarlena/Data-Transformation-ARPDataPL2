@@ -52,6 +52,11 @@ data['(kW) bins'] = pd.cut(data['(kW)'], bins=bins, labels=["Low", "Medium", "Hi
 # print(data['(kW) bins'])
 
 # one hot encoding
+# print(pd.get_dummies(data['(kW) bins']))
+data = pd.concat([data, pd.get_dummies(data['(kW) bins'])], axis=1)
+
+del data['(kW) bins']
+# print(data.info())
 
 # usuwanie szumów
 
