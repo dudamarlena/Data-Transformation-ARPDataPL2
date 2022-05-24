@@ -26,7 +26,7 @@ data = pd.read_csv(r"Datasets/cars.csv", sep=";")
 # print(data['Make'].unique())
 
 # print(data['TIME (h)'].unique())
-# data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x))
+data['TIME (h)'] = data['TIME (h)'].apply(lambda x: 4 if x == 'four' else int(x))
 # print(data['TIME (h)'].unique())
 
 # print(data.select_dtypes(object).describe())
@@ -61,9 +61,9 @@ data = pd.read_csv(r"Datasets/cars.csv", sep=";")
 # usuwanie szumów - outliers
 # print(sorted(data['(kW)'].unique()))
 
-# data = data[data['(kW)'] < 600]
+data = data[data['(kW)'] < 600]
 
-factor = 3  # musi byc <2,4>
+# factor = 3  # musi byc <2,4>
 
 # upper_limit = data['(kW)'].mean() + data['(kW)'].std() * factor
 # lower_limit = data['(kW)'].mean() - data['(kW)'].std() * factor
@@ -83,16 +83,28 @@ factor = 3  # musi byc <2,4>
 # plt.show()
 
 # praca z datami
-data['date'] = '01/01/2000'
-data['date'] = pd.to_datetime(data['date'])
-data['new date'] = pd.date_range(start='01/01/2000', periods=len(data), freq="M")
-print(data['new date'])
-data['Year'] = data['new date'].dt.year
-data['Month'] = data['new date'].dt.month
-data['Year and month'] = data['new date'].dt.to_period("M")
-print(data['Year and month'])
+# data['date'] = '01/01/2000'
+# data['date'] = pd.to_datetime(data['date'])
+# data['new date'] = pd.date_range(start='01/01/2000', periods=len(data), freq="M")
+# print(data['new date'])
+# data['Year'] = data['new date'].dt.year
+# data['Month'] = data['new date'].dt.month
+# data['Year and month'] = data['new date'].dt.to_period("M")
+# print(data['Year and month'])
 
 # nornalizacja, standaryzacja
+data['TIME (h) normalized'] = (data['TIME (h)'] - data['TIME (h)'].min()) / \
+                              (data['TIME (h)'].max() - data['TIME (h)'].min())
+data['(kW) normalized'] = (data['(kW)'] - data['(kW)'].min()) / \
+                              (data['(kW)'].max() - data['(kW)'].min())
+
+# plt.plot(data['TIME (h)'])
+plt.plot(data['TIME (h) normalized'])
+# plt.plot(data['(kW)'])
+plt.plot(data['(kW) normalized'])
+
+plt.show()
+
 
 # transformacja logarytmiczna
 dummy_list = pd.Series([0, 0, 1, 3, 2, 2, 1, 2, 1, 2, 2, 2, 3, 4, 7, 8, 5, 4, 10, 9, 11, 14])
