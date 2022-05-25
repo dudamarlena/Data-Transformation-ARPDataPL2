@@ -89,3 +89,43 @@ VALUES
 (1, 9, '2020-07-17', '2020-07-19', 720),
 (3, 7, '2020-07-18', '2020-07-21', 240),
 (5, 4, '2020-07-18', '2020-07-22', 1200);
+
+SELECT * FROM cars WHERE year>2015;
+
+SELECT * FROM bookings WHERE total_amount BETWEEN 1000 AND 2555;
+
+SELECT name, surname FROM clients WHERE surname LIKE 'N%' AND name LIKE '%ej';
+
+SELECT
+producer AS producer_name,
+model AS model_name
+FROM cars
+WHERE producer IN ('Seat', 'BMW');
+
+SHOW COLUMNS FROM bookings;
+
+SELECT
+c.producer,
+b.total_amount
+FROM cars AS c
+LEFT JOIN bookings AS b
+ON c.car_id=b.car_id
+WHERE total_amount IS NULL;
+
+
+SELECT
+city,
+COUNT(*) AS 'clients count'
+FROM clients
+GROUP BY city
+ORDER BY 2 DESC
+LIMIT 3;
+
+SELECT
+client_id,
+AVG(total_amount) AS 'avg price'
+FROM bookings
+WHERE car_id IN (2,9,4,6)
+GROUP BY client_id
+HAVING AVG(total_amount)>500
+ORDER BY 2;
